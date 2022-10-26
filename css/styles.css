@@ -1,7 +1,8 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    color: #15171c
+    color: var(--baseColor);
+    background: var(--baseBackground) ;
 }
 :root{
     --lime-green: hsl(163, 72%, 41%);
@@ -12,6 +13,13 @@ body {
     --instagram2: hsl(329, 70%, 58%);
     --youTube: hsl(348, 97%, 39%);
     --gray: #5f616d;
+    --cardGray: #f0f3fa;
+    --lightGray: #f8f9fe;
+    --cardTitle: #6f717e;
+    --baseBackground: white;
+    --baseColor: #15171c;
+    --switchSpinner: white;
+    --switch: #5f616d;
 } /*--facebook: hsl(195, 100%, 50%); */
 .wrapper {
     padding: 0 30px;
@@ -20,10 +28,46 @@ body {
 .grid{
     display: grid;
     grid-row-gap: 25px; 
+}   
+.dark-mode{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
+}
+
+.checkbox{
+    display: none;
+}
+.checkbox:checked ~ .switch:before{
+    transform: translateX(0);
+}
+
+.switch {
+    height: 40px;
+    display: block;
+    border-radius: 20px;
+    background: var(--switch);
+    width: 80px;
+    padding: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+}
+/* bolita */
+.switch::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: var(--switchSpinner);
+    border-radius: 50%;
+    transform: translateX(40px);
+    transition: .3s;
+    will-change: transform;
 }
 
 .header{
-    background: #f8f9fe;
+    background: var(--lightGray);
     padding-bottom: 100px;
     border-radius: 0 0 20px 20px;
     padding-top: 2em;
@@ -34,7 +78,7 @@ body {
     color: var(--gray);
     margin: .5em 0;
     font-weight: 600;
-    border-bottom: 2px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
     padding-bottom: 1.5em;
 }
 
@@ -51,7 +95,7 @@ h1{
     
     border-radius: 8px;
     overflow: hidden;
-    background: #f0f3fa;
+    background: var(--cardGray);
     text-align: center;
     padding: 1.7em 0;
    position: relative;
@@ -88,7 +132,7 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#6f717e;
+    color:var(--cardTitle);
     font-size: .9em;
     font-weight: bold;
 }
@@ -109,7 +153,7 @@ h1{
 .card-followers-title{
     display: block;
     text-transform: uppercase;
-    color: var(--gray);
+    color: var(--cardTitle);
     letter-spacing: 5px;
     font-size: .75em;
    }
@@ -140,7 +184,7 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-row-gap: 1em;
-    background: #f0f3fa;
+    background: var(--cardGray);
     border-radius: 8px;
     padding: 1.7em;
 }
@@ -150,7 +194,7 @@ h2 {
 }
 
 .card-small-views{
-    color: var(--gray);
+    color: var(--cardTitle);
     font-size: .9em;
     font-weight: bold;
 }
@@ -183,3 +227,87 @@ h2 {
 .card-small-percentage img{
     margin-right: 5px;
 }
+
+@media screen and (min-width: 480px){
+      .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 25px;
+    }
+
+    .wrapper {
+        max-width: 1440px;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 768px){
+    .grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px){
+      .grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .header-total{
+        border: none;
+      }
+      .header-grid {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+    }
+}
+
+.is-dark-mode {
+    --cardGray: #252b43;
+    --baseBackground: #1d2029;
+    --baseColor: rgb(241, 234, 234);
+    --gray: #8088ad;
+    --lightGray: #1d2029;
+    --cardTitle: #8088ad;
+    --switchSpinner:#282943;
+    --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+}
+.is-light-mode {
+    --gray: #5f616d;
+    --cardGray: #f0f3fa;
+    --lightGray: #f8f9fe;
+    --cardTitle: #6f717e;
+    --baseBackground: white;
+    --baseColor: #15171c;
+    --switchSpinner: white;
+    --switch: #5f616d;
+}
+
+@media (prefers-color-scheme: dark){
+          
+    :root{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+        --cardGray: #252b43;
+        --baseBackground: #1d2029;
+        --baseColor: rgb(241, 234, 234);
+        --gray: #8088ad;
+        --lightGray: #1d2029;
+        --cardTitle: #8088ad;
+        --switchSpinner:#282943;
+        --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+    }
+    }
+
+    /* .card-followers-title {
+        color: rgb(188, 178, 178); 
+    }
+     .card-title{ 
+        color: var(--gray)
+    }
+    .card-small{
+        background: #252b43;
+    }
+    .card-small-views {
+     color: #8088ad;   
+    }
+    .switch{
+        background-image: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+    }
+    .switch::before {
+        background: #282943;
+    } */
